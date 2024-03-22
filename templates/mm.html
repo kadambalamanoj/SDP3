@@ -1,0 +1,44 @@
+{% extends 'Navbar.html'%}
+{%load static %}
+{% block body %}
+
+<style>
+    /* CSS to center-align content */
+    .centered-content {
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 70vh; /* Set height to 100% of viewport height */
+    }
+</style>
+
+<div class="centered-content">
+    <div>
+
+        <form method="post" action="{% url 'ma' %}">
+            {% csrf_token %}
+            <h2>Enter Name and Email</h2>
+            <form id="userInfoForm">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name1" required><br><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                <button type="submit" id="submitButton">Submit</button>
+            </form>
+        </form>
+
+        <script>
+            document.getElementById("userInfoForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the form from submitting
+
+                // Hide user info form
+                document.getElementById("userInfoForm").style.display = "none";
+                // Display OTP section
+                document.getElementById("otpSection").style.display = "block";
+            });
+        </script>
+    </div>
+</div>
+
+
+{% endblock %}

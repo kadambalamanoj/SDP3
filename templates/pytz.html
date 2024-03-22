@@ -1,0 +1,36 @@
+<!-- get_date.html -->
+{% extends 'Navbar.html' %}
+<html>
+{% block body %}
+<div>
+  <div class="container">
+  <div class="row">
+    <div  align="center" class="col">
+        <br> <br>
+  <h2>Get Time</h2>
+       <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+      <br> <br>
+  <form method="post" action="{% url 'tzcall' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Get Country time</button>
+    <br> </br>
+  </form>
+          </div>
+      <div  align="center" class="col">
+          <br><br>
+          <h1>Updated time : {{ updated_date }}</h1>
+      </div></div>
+</div>
+</div>
+{% endblock %}
+</html>
